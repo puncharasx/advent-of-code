@@ -21,7 +21,7 @@ function inputToArray(input) {
 
 function main() {
   const input = fs.readFileSync(
-    new URL('../input.txt', import.meta.url),
+    new URL('./input.txt', import.meta.url),
     'utf-8'
   )
   const [left, right] = inputToArray(input)
@@ -34,8 +34,21 @@ function main() {
     const diff = left[i] - right[i]
     result += Math.abs(diff)
   }
-  console.log('result: ', result)
-  return result
+  console.log('Part 1: ', result)
+
+  // Part 2
+
+  let resultPart2 = 0
+  for (let i = 0; i < left.length; i++) {
+    for (let j = 0; j < right.length; j++) {
+      if (left[i] === right[j]) {
+        resultPart2 += left[i]
+      } else {
+        resultPart2 += 0
+      }
+    }
+  }
+  console.log('Part 2:', resultPart2)
 }
 
 main()
